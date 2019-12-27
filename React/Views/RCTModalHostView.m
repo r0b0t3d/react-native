@@ -260,7 +260,7 @@ RCT_NOT_IMPLEMENTED(- (instancetype)initWithCoder:coder)
 
 // MARK: - UIAdaptivePresentationControllerDelegate
 - (void)presentationControllerDidDismiss:(UIPresentationController *)presentationController {
-  [self removeReactSubview:_reactSubview];
+  [self dismissModalViewController];
 }
 
 @end
