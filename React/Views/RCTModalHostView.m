@@ -189,6 +189,7 @@ RCT_NOT_IMPLEMENTED(- (instancetype)initWithCoder:coder)
       _modalViewController.modalPresentationStyle = self.presentationStyle;
     }
     [_delegate presentModalHostView:self withViewController:_modalViewController animated:[self hasAnimationType]];
+    _modalViewController.presentationController.delegate = self;
     _isPresented = YES;
   }
 }
@@ -256,5 +257,10 @@ RCT_NOT_IMPLEMENTED(- (instancetype)initWithCoder:coder)
   return supportedOrientations;
 }
 #endif
+
+// MARK: - UIAdaptivePresentationControllerDelegate
+- (void)presentationControllerDidDismiss:(UIPresentationController *)presentationController {
+  [self removeReactSubview:_reactSubview];
+}
 
 @end
